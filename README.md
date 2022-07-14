@@ -12,6 +12,7 @@
 - [Introduction](#Introduction)
 - [Methodology](#Methodology)
 - [Results](#Results)
+- [Future prospects](#Future-prospects)
 - [Dependencies](#Dependencies)
 - [Team](#Team)
 - [Acknowledgment](#Acknowledgment)
@@ -27,9 +28,37 @@
 - **Project goals**: In this project, we would like to retrieve SNPs from genomics data and show them in iCn3D with 1D/2D/3D representations on interaction networks. We will design a pipeline that automatically extracts SNPs from the variant call format (VCF) file and generates an iCn3D link annotated with variant effect predictions (SIFT, PolyPhen). Additionally, we would like to improve the visualization of SNPs mapped to the structure. This would allow us to study the deleterious effects of SNPs in the structural context.
 
 
+## Methodology **(In progress)**
+**1] Input Gene ID, annotation, and mapping**
+- The script takes as input an Ensembl gene ID and a VCF file.
+- Annotation: The following information is retrieved for the gene ID using the [Ensembl Rest API] (https://rest.ensembl.org):
+    * Corresponding Ensembl protein ID
+    * Chromosomal coordinates
+- Mapping: 
+    * The input gene ID is also mapped to a UniProt primary accession (UPrimAC) using the UniProtKB/Swiss-Prot database.
+    * This ID is later used to generate an iCn3D link based on the variants.
 
-## Methodology
+**2] Extract VCF file variants**
+- Variants that match the input gene are extracted from the VCF file
 
+**3] Predict the functional effects of variants**
+- The deleterious effect of the identified variants is predicted using the Ensembl Variant Effect Predictor (VEP) Rest API.
+- Currently, we utilize two pathogenicity prediction scores: SIFT and PolyPhen.
+
+**4] Generate the iCn3D path based on variants of interest**
+- Finally, an `iCn3D link` is generated using the UPrimAC retrieved earlier (see step 1), including variant annotation information (those predicted to be `deleterious` by SIFT and PolyPhen).
+- Automatically open the link in your favorite web browser.
+
+</br>
+<img width="1391" alt="Flowchart_VizSNP-St" src="https://user-images.githubusercontent.com/74168582/178969212-40c68667-9b2c-46cc-bfe1-2c7a6f38de27.png">
+
+
+## Results
+
+## Future prospects:
+- Remove requirement for knowing the Ensembl Gene ID (just submit a VCF)
+- Perform more sophisticated filtering on the VCF file. (Right now it just selects deleterious mutations.)
+- Deal with multiple SNPs, either from a single gene or multiple genes.
 
 ## Dependencies
 - Python version >= 3
@@ -38,17 +67,15 @@
 - You can easily install this with conda (Ex: conda install -c bioconda pysam)
 - Most other standard core modules should already be available on your system
 
-
 ## Team 
-- Bonface Onyango
-- Brenda Kiage
-- Christian Cruz
-- Manoj M Wagle
-- Michael Sierk
-- Pranavathiyani G
+- [Bonface Onyango](https://github.com/bonfaceonyango)
+- [Manoj M Wagle](https://github.com/manojmw)
+- [Michael Sierk](https://github.com/msierk)
+- [Pranavathiyani G](https://github.com/pranavathiyani)
 
 ## Acknowledgment
 - We would like to thank the **International Society for Computational Biology/Intelligent Systems for Molecular Biology (ISCB/ISMB)** and the **National Center for Biotechnology Information (NCBI)** for their support and for providing all the required computational resources during the codeathon.
+- We would also like to thank Shashi Ranayake from the Center for Biomedical Informatics and Information Technology, Computational Genomics and Bioinformatics Branch at the National Cancer Institute for drafting the original version of the script. Subsequent improvements and new features were added by Manoj M Wagle and Michael Sierk.
 
 
 ## References
