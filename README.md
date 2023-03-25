@@ -1,3 +1,7 @@
+**NOTE**:</br>
+This GitHub repository is no longer being updated. We have migrated it to the following link - https://github.com/CBIIT-CGBB/3DVizSNP
+</br></br>
+
 ***
 
 <p align = "center">
@@ -87,23 +91,32 @@
   <img src="https://user-images.githubusercontent.com/74168582/180654007-9da19c54-5793-4ab9-a3b3-1800e16fd942.gif" width="600" height="450">
 </p>
 
-## Future prospects:
-- Remove requirement for knowing the Ensembl Gene ID (just submit a VCF)
-- Perform more sophisticated filtering on the VCF file. (Right now it just selects deleterious mutations.)
-- Deal with multiple SNPs, either from a single gene or multiple genes.
-
 ## Dependencies
 - Python version >= 3
 - Required modules:
+  * pandas
+  * requests
   * pysam
-- You can easily install this with conda (Ex: conda install -c bioconda pysam)
+- You can easily install these with pip (Ex: pip install pandas)
+- Alternatively, you can run the following command in your terminal to install the above dependencies in your Python environment:
+
+  ```
+  pip3 install -r requirements.txt
+  ```
+
 - Most other standard core modules should already be available on your system
 
+## Future prospects
+- Remove requirement for knowing the Ensembl Gene ID (just submit a VCF)
+- Perform more sophisticated filtering on the VCF file. (Right now it just selects deleterious mutations.)
+- Deal with multiple SNPs, either from a single gene or multiple genes.
+- Incorporate color ramp highlighting of residues based on SIFT & Polyphen scores
+
 ## Team 
-- [Bonface Onyango](https://github.com/bonfaceonyango)
-- [Manoj M Wagle](https://github.com/manojmw)
-- [Michael Sierk](https://github.com/msierk)
-- [Pranavathiyani G](https://github.com/pranavathiyani)
+- [Bonface Onyango](https://github.com/bonfaceonyango), Pwani University
+- [Manoj M Wagle](https://github.com/manojmw), Université Grenoble Alpes; Manipal Academy of Higher Education
+- [Michael Sierk](https://github.com/msierk), National Cancer Institute
+- [Pranavathiyani G](https://github.com/pranavathiyani), Pondicherry University
 
 ## Acknowledgment
 - We would like to thank the **International Society for Computational Biology/Intelligent Systems for Molecular Biology (ISCB/ISMB)** and the **National Center for Biotechnology Information (NCBI)** for their support and for providing all the required computational resources during the codeathon.
